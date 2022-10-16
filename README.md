@@ -15,11 +15,21 @@ A simple resume parser used for extracting information from resumes
 - Extract designation
 - Extract company names
 
-# Installation
+# Installation (users)
 
 - You can install this package using
 
 ```Coming Soon```
+
+# Installation (dev)
+
+- You can install this package using
+
+```
+git clone https://github.com/gamingflexer/resume-parser-ranker.git
+cd resume-parser-ranker
+pip install .
+```
 
 - For NLP operations we use spacy and nltk. Install them using below commands:
 
