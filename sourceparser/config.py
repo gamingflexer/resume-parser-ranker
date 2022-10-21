@@ -17,3 +17,7 @@ nations = 'models/nationality.csv'
 state = 'models/state.csv'
 country ='models/country.csv'
 city = "models/cities_samples.txt"
+
+#temp data
+
+outputDirectory = os.path.join(basepath,"temp")
