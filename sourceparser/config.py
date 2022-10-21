@@ -4,7 +4,7 @@ index = "/"
 
 #whole
 basepath = os.path.dirname(os.path.realpath(__file__))
-models = os.path.join(basepath, 'models')
+models_path = os.path.join(basepath, 'models')
 summarizer = os.path.join(basepath, 'summarizer')
 
 summary_model = os.path.join(basepath,"models","summarize_model")
