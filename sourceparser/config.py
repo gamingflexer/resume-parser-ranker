@@ -7,7 +7,7 @@ basepath = os.path.dirname(os.path.realpath(__file__))
 models = os.path.join(basepath, 'models')
 summarizer = os.path.join(basepath, 'summarizer')
 
-summary_model = os.path.join(basepath,"models","outputs-100-out-lenght")
+summary_model = os.path.join(basepath,"models","summarize_model")
 summary_db = os.path.join(basepath,"models","Summary-db.csv")
 summary_extractive = os.path.join(basepath,"models","Extractive_BART")
 
