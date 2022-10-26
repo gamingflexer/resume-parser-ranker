@@ -2,7 +2,7 @@ from __future__ import division
 import re
 import os
 from datetime import date
-from config import models_path
+from config import models_path,basepath
 
 import docx2txt
 import pandas as pd
