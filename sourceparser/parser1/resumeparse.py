@@ -195,8 +195,9 @@ class resumeparse(object):
         #     return resume_lines
         try:
           if docx_parser == "tika":
-            raw_text1 = textract.process(pdf_file)
+            raw_text1 = textract.process(docx_file)
             raw_text = str(raw_text1.decode())
+            return raw_text
           elif docx_parser == "docx2txt":
             text = docx2txt.process(docx_file)
           else:
@@ -276,7 +277,8 @@ class resumeparse(object):
         except Exception as e:
             logging.error('Error in docx file:: ' + str(e))
             return [], " "
-            
+           
+    '''finds segments of text that are likely to be names of the topics and takes the text that follows them''' 
     def find_segment_indices(string_to_search, resume_segments, resume_indices):
         for i, line in enumerate(string_to_search):
 
@@ -328,6 +330,7 @@ class resumeparse(object):
                     header = [a for a in resumeparse.accomplishments if header.startswith(a)][0]
                     resume_segments['accomplishments'][header] = i
 
+    '''Reslice the segments according to your needs'''
     def slice_segments(string_to_search, resume_segments, resume_indices):
         resume_segments['contact_info'] = string_to_search[:resume_indices[0]]
 
@@ -342,6 +345,7 @@ class resumeparse(object):
 
                 resume_segments[section][sub_section] = string_to_search[start_idx:end_idx]
 
+    '''extracts certain information from the resume'''
     def segment(string_to_search):
         resume_segments = {
             'objective': {},
