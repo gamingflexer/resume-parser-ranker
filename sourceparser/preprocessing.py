@@ -11,6 +11,7 @@ from pdfminer.pdfpage import PDFPage
 from pdfminer.pdfparser import PDFSyntaxError
 from sourceparser.constants import *
 from nltk import ngrams
+from deep_translator import GoogleTranslator
 
 
 extracted_dates = {}
@@ -498,6 +499,8 @@ def dict_clean(dict):
     return dict
 
 # github links
+
+
 def find_gitlink(github_links):
     for i in github_links:
         m = i.split("/")
@@ -507,6 +510,8 @@ def find_gitlink(github_links):
             return i
 
 # remove emoji
+
+
 def strip_emoji(string):
     try:
         emoji_pattern = re.compile("["
@@ -521,3 +526,15 @@ def strip_emoji(string):
     except Exception as e:
         print("Error for emoji - ", e)
         return string
+
+def g_translation_function_en(inText):
+    try:
+        if len(inText) <= 4999:
+            outText = GoogleTranslator(
+                source='auto', target='en').translate(inText)
+            return outText
+        else:
+            return inText
+    except Exception as e:
+        print(e)
+        return inText
