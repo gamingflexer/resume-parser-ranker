@@ -36,7 +36,7 @@ designitionmatcher = PhraseMatcher(en_sm.vocab)
 patterns = [en_sm.make_doc(text) for text in designation if len(en_sm.make_doc(text)) < 10]
 designitionmatcher.add("Job title", None, *patterns)
 
-file = os.path.join(base_path,"skills_parser1.txt")
+file = os.path.join(models_path, "txt_utils","skills_parser1.txt")
 file = open(file, "r", encoding='utf-8')    
 skill = [line.strip().lower() for line in file]
 skillsmatcher = PhraseMatcher(en_sm.vocab)
@@ -631,7 +631,7 @@ class resumeparse(object):
         phone = resumeparse.find_phone(full_text)
         name = resumeparse.extract_name(" ".join(resume_segments['contact_info']))
         total_exp, text = resumeparse.get_experience(resume_segments)
-        university = resumeparse.extract_university(full_text, os.path.join(base_path,'world-universities.csv'))
+        university = resumeparse.extract_university(full_text, os.path.join(models_path, "txt_utils",'world-universities.csv'))
 
         designition = resumeparse.job_designition(full_text)
         designition = list(dict.fromkeys(designition).keys())
