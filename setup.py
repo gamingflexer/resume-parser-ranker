@@ -1,4 +1,6 @@
 from setuptools import setup
+import spacy.cli
+spacy.cli.download("en_core_web_sm")
 
 setup(
     name='sourceparser',
@@ -21,16 +23,16 @@ setup(
                       "setuptools==65.4.0",
                       "python-dateutil==2.8.2",
                       "phonenumbers==8.12.34",
-                      "pdfplumber",
-                       "textract",
-                      "stemming",
-                      "tika",
+                      "pdfplumber==0.7.5",
+                       "textract==1.5.0",
+                      "stemming==1.0.1",
+                      "tika==1.24",
                       "docx2txt==0.8",
-                      "pandas",
-                      "spacy_langdetect",
-                      "transformers",
+                      "pandas==1.3.5",
+                      "spacy_langdetect==0.1.2",
+                      "transformers==4.24.0",
                       "torch",
-                      "deep_translator"
+                      "deep_translator==1.9.1"
                       ],
 
     classifiers=[
