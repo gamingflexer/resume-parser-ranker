@@ -9,7 +9,7 @@ from nltk.tokenize import word_tokenize
 from date_extractor import extract_dates
 from pdfminer.pdfpage import PDFPage
 from pdfminer.pdfparser import PDFSyntaxError
-from sourceparser.constants import *
+from constants import *
 from nltk import ngrams
 from deep_translator import GoogleTranslator
 
