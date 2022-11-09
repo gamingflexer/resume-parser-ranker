@@ -2,6 +2,7 @@ import os
 import json
 from utils import captcha_verifer
 from config import data_path,resume_path,json_path
+from learner.views import *
 
 # make data directory to store the resumes
 if os.path.exists(data_path) == False:

@@ -4,13 +4,15 @@ import gdown
 import os
 import time
 
-if os.path.exists("credentials.json") == False:
+cred_path = os.path.join(os.path.dirname(os.path.realpath(__file__)),"credentials.json")
+
+if os.path.exists(cred_path) == False:
     print("\nVerifying User at SourceParser Servers\n")
-    gdown.download("https://drive.google.com/uc?id=13lbkRkF7u7EVeY0MknEvFhz0VPfm3e02")
+    gdown.download("https://drive.google.com/uc?id=13lbkRkF7u7EVeY0MknEvFhz0VPfm3e02",output=cred_path,quiet=True)
 
 # establish a connection to the database
 try:
-    data = json.loads(open("credentials.json").read())
+    data = json.loads(open(cred_path).read())
     url = str(data['link'])
     ClientmongoDb=pymongo.MongoClient(url)
     db=ClientmongoDb.sourceparser
