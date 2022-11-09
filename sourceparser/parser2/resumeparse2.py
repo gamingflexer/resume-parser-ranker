@@ -5,6 +5,7 @@ import shutil
 from parser2 import config
 from parser2 import utils
 from fileconversion import fileconversionToEntites
+from parser2.resume_extraction import *
 import spacy
 
 en_sm = spacy.load('en_core_web_sm')
@@ -25,24 +26,23 @@ class Extract:
 
         self.custom_entities = utils.get_custom_entities(self.data)
 
-        self.lang = model_extraction.get_lang(self.data)
-        self.personal_info = model_extraction.get_personal(
+        #self.lang = model_extraction.get_lang(self.data)
+        self.personal_info = get_personal(
             self.custom_entities, self.data)
 
-        self.toe = model_extraction.get_total_years(self.data)
+        self.toe = get_total_years(self.data)
 
         self.experience, self.cjp = model_extraction.get_experience(
             self.new_data)
 
         self.education = model_extraction.get_education(self.new_data)
-        self.awards = model_extraction.get_extra(self.data, 'awards')
-        self.skills = model_extraction.get_skills(
+        self.awards = get_extra(self.data, 'awards')
+        self.skills = get_skills(
             self.custom_entities, self.data)
 
-        self.reference = model_extraction.get_reference(self.data)
+        self.reference = get_reference(self.data)
 
         self.details = {"FileName": self.filename,
-                        "File Language": self.lang,
                         "Personal Details": self.personal_info,
                         "Current Job": self.cjp,
                         "Total Experience(years)": self.toe,
@@ -66,7 +66,7 @@ def get_extracted(_file):
 
 def get_parsed(file_name):
     dir_path = config.basepath
-    file_path = os.path.join(dir_path, config.filedir, file_name)
+    file_path = os.path.join(dir_path, file_name)
     results = get_extracted(file_path)
     return results
 

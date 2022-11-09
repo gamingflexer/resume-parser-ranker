@@ -2,7 +2,7 @@ import re
 import nltk
 from nltk import ngrams
 import spacy
-import config
+import parser2.config as config2
 
 # Removing Ansi from text
 def escape_ansi(line):
@@ -53,7 +53,7 @@ def preprocess(sent):
 
 def get_custom_entities(text):
     
-    model_dir = config.resume_model
+    model_dir = config2.resume_model
 
     nlp2 = spacy.load(model_dir)
     doc2 = nlp2(text)
