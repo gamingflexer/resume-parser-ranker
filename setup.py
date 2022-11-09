@@ -4,7 +4,7 @@ spacy.cli.download("en_core_web_sm")
 
 setup(
     name='sourceparser',
-    version='0.1.0',
+    version='0.1.1',
     description='A simple resume parser used for extracting information from resumes',
     url='https://github.com/gamingflexer/resume-parser-ranker',
     author='gamingflexer',
@@ -32,7 +32,8 @@ setup(
                       "spacy_langdetect==0.1.2",
                       "transformers==4.24.0",
                       "torch",
-                      "deep_translator==1.9.1"
+                      "deep_translator==1.9.1",
+                      "pyfiglet==0.8.post1",
                       ],
 
     classifiers=[

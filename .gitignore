@@ -128,3 +128,6 @@ dmypy.json
 # Pyre type checker
 .pyre/
 notes.txt
+parser1_log.txt
+test.ipynb
+resume-parser-ranker.code-workspace

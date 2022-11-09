@@ -195,7 +195,7 @@ class resumeparse(object):
         #     resume_lines = [re.sub('\s+', ' ', line.strip()) for line in resume_lines if line.strip()]  # Remove empty strings and whitespaces
         #     return resume_lines
         try:
-          if docx_parser == "tika":
+          if docx_parser == "textract":
             raw_text1 = textract.process(docx_file)
             raw_text = str(raw_text1.decode())
             return raw_text
@@ -603,7 +603,7 @@ class resumeparse(object):
         skills = list(set(skills))
         return skills
 
-
+    #for parser 1
     def read_file(file,docx_parser = "tika"):
         """
         file : Give path of resume file
