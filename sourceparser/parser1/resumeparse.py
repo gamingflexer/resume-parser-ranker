@@ -12,8 +12,7 @@ import pdfplumber
 import textract
 
 import logging
-logging.basicConfig(filename="parser1_log.txt")
-
+logging.basicConfig(filename="parser_log.txt",level=logging.DEBUG)
 import spacy
 from spacy.matcher import Matcher
 from spacy.matcher import PhraseMatcher
@@ -24,8 +23,8 @@ from stemming.porter2 import stem
 # load pre-trained model
 
 en_sm = spacy.load('en_core_web_sm')
-custom_nlp2 = spacy.load(os.path.join(models_path,"parser1","degree","model")) #
-custom_nlp3 = spacy.load(os.path.join(models_path,"parser1","company","model")) #
+custom_nlp2 = spacy.load(os.path.join(models_path,"parser1","degree","model")) # custom model for degree
+custom_nlp3 = spacy.load(os.path.join(models_path,"parser1","company","model")) # custom model for company
 
 # initialize matcher with a vocab
 matcher = Matcher(en_sm.vocab)
@@ -202,7 +201,7 @@ class resumeparse(object):
           elif docx_parser == "docx2txt":
             text = docx2txt.process(docx_file)
           else:
-            logging.error('Choose docx_parser from tika or docx2txt :: ' + str(e)+' is not supported')
+            logging.debug('Choose docx_parser from tika or docx2txt :: ' + str(e)+' is not supported')
             return [], " "
         except RuntimeError as e:            
             logging.error('Error in tika installation:: ' + str(e))

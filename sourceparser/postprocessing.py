@@ -25,7 +25,6 @@ def postprocess(dict):
         t = 0
         for m in k:
           try:
-            print(m)
             m = strip_emoji(m)
             m = re.sub("\n"," ",m)
             m = re.sub("/n"," ",m)
@@ -39,7 +38,6 @@ def postprocess(dict):
         if i == 'Personal Details':
             for m in personal_keys:
                 temp = k[m]
-                #print(temp)
                 try:
                     temp = strip_emoji(temp)
                     temp = re.sub("\n"," ",temp)
@@ -51,7 +49,6 @@ def postprocess(dict):
         if i == 'Experience':
             for m in exp_keys:
                 temp = k[m]
-                #print(temp)
                 try:
                     temp = strip_emoji(temp)
                     temp = re.sub("\n"," ",temp)
@@ -63,7 +60,6 @@ def postprocess(dict):
         if i == 'Education':
             for m in edu_keys:
                 temp = k[m]
-                #print(temp)
                 try:
                     temp = strip_emoji(temp)
                     temp = re.sub("\n"," ",temp)

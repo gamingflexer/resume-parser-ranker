@@ -9,11 +9,12 @@ import phonenumbers
 from parser2 import config
 from parser2 import utils
 from parser1.resumeparse import en_sm
-
 from transformers import AutoTokenizer, AutoModelForTokenClassification, pipeline
 
-tokenizer_bert_ner = AutoTokenizer.from_pretrained("dslim/bert-base-NER")
-model_bert_ner = AutoModelForTokenClassification.from_pretrained("dslim/bert-base-NER")
+import logging as lg
+
+# tokenizer_bert_ner = AutoTokenizer.from_pretrained("dslim/bert-base-NER")
+# model_bert_ner = AutoModelForTokenClassification.from_pretrained("dslim/bert-base-NER")
 
 
 nlp = spacy.load('en_core_web_sm')
@@ -102,7 +103,7 @@ def get_skills(custom_entities, text):
         if len(entities['Skills']) > 4:
             return entities['Skills']
     except:
-        print("No skills entitiy")
+        lg.info("No skills entitiy | PARSER2")
 
     skills = list()
     exp = []
@@ -423,7 +424,7 @@ def get_head_sections(data, e_val=30, split_val=10):
                             _string += lines[exp+i] + '\n'
                             index_list.append(exp+i)
                 except:
-                    print("Exception in education")
+                    lg.info("Exception in education | PARSER2")
             education_string += _string
             _string = ''
     sections_dict['education'] = education_string
@@ -585,7 +586,10 @@ def get_personal(custom_entities, data):
     emailid = get_email(data)
     name = get_name(custom_entities, data)
     if (name==None or name=="None"):
-        name = name_bert(data,model_bert_ner,tokenizer_bert_ner)
+        try:
+            name = name_bert(data,model_bert_ner,tokenizer_bert_ner)
+        except:
+            pass
     else:
         name='None-'
     phoneno = get_phonenumber(data)

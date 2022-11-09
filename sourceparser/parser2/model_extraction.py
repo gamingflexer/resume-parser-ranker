@@ -3,6 +3,8 @@ from parser2 import config
 from parser2 import utils
 import spacy
 import re
+import logging as lg
+lg.basicConfig(filename="parser2_log.txt",level=lg.DEBUG)
 
 def get_custom_entities_eduexp(text, type):
     if type == "education":
@@ -31,9 +33,6 @@ def get_education(text):
             education_whole = get_custom_entities_eduexp(new_text, "education")
             education = education_whole
             new_text = text        
-        
-        
-            
         try:
             degree  = [edu for edu in education['Degree'] if len(edu.split())<10]
             for edu in education['Degree']:
@@ -41,7 +40,7 @@ def get_education(text):
                     ll = edu.split()
                     add = ' '.join(l for ind, l in enumerate(ll) if ind<=10)
                     degree.append(add)
-        except:print("Exception-Degree")
+        except:lg.info("Exception-Degree")
         try:
             college = [col for col in education['College Name'] if len(col.split())<10]
             for edu in education['College Name']:
@@ -50,7 +49,7 @@ def get_education(text):
                     add = ' '.join(l for ind, l in enumerate(ll) if ind<8)
                     college.append(add)
             
-        except:print("Exception-College")
+        except:lg.info("Exception-College")
         try:
             during = [col for col in education['Graduation Year'] if len(col.split())<10]
             for dur in education['Graduation Year']:
@@ -58,7 +57,7 @@ def get_education(text):
                     ll = dur.split()
                     add = ' '.join(l for ind, l in enumerate(ll) if ind<8)
                     during.append(add)
-        except:print("Exception-Graduation Year")
+        except:lg.info("Exception-Graduation Year")
 
         college_index, degree_index, during_index = [], [], []
         extra_degree, extra_college, extra_during  = [], [], []
@@ -154,7 +153,7 @@ def get_education(text):
 
         return new_education
     except:
-        print("Exception..")
+        lg.info("Exception.. Education moderl PARSER2")
         return ''
 
 
@@ -178,7 +177,7 @@ def get_experience(text):
             for exp in experience_whole['Designation']:
                 if exp not in experience['Designation']:
                     experience['Designation'].append(exp)
-        except:print("exception in full text experience")
+        except:lg.info("exception in full text experience | PARSER2")
         
         if 'Designation' not in experience:
             experience = experience_whole
@@ -192,7 +191,7 @@ def get_experience(text):
                     ll = edu.split()
                     add = ' '.join(l for ind, l in enumerate(ll) if ind<=10)
                     designation.append(add)
-        except:print("Exception-Desingation")
+        except:lg.info("Exception-Desingation | PARSER2")
         try:
             company = [comp for comp in experience['Companies worked at'] if len(comp.split())<10]
             for edu in experience['Companies worked at']:
@@ -200,7 +199,7 @@ def get_experience(text):
                     ll = edu.split()
                     add = ' '.join(l for ind, l in enumerate(ll) if ind<=10)
                     company.append(add)
-        except:print("Exception-Companies Worked at")
+        except:lg.info("Exception-Companies Worked at | PARSER2")
         try:
             during = [dur for dur in experience['Years of Experience'] if len(dur.split())<10]
             for dur in experience['Years of Experience']:
@@ -208,7 +207,7 @@ def get_experience(text):
                     ll = dur.split()
                     add = ' '.join(l for ind, l in enumerate(ll) if ind<=10)
                     during.append(add)
-        except:print("Exception-Years Of experience")
+        except:lg.info("Exception-Years Of experience | PARSER2")
 
         
         company_index, designation_index,during_index  = [], [], []
@@ -309,11 +308,11 @@ def get_experience(text):
                 CJP = RE.get_custom_entities(text)['Current Job Position'][0]    
         except:
             CJP = ''
-            print("no current job")
+            lg.info("no current job | PARSER2")
         return new_experience, CJP
 
     except:
-        print("Exception")
+        lg.info("Exception | PARSER2")
         return '', ''
     
     

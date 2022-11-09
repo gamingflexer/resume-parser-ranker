@@ -235,7 +235,6 @@ def clean_bert(entities1, tags_vals):
     r = []
     for k in range(len(main)):
         for key, value in main[k].items():
-            # print(value)
             if value == '':
                 r = r + [k]
                 # main.remove(main[k])
@@ -268,7 +267,6 @@ def clean_bert(entities1, tags_vals):
             elif key == "Empty":
                 main.remove(val)
 
-    print(main)
     return main
 
 
@@ -450,7 +448,6 @@ def dict_clean(dict):
         t = 0
         for m in k:
             try:
-                print(m)
                 m = strip_emoji(m)
                 m = re.sub("\n", " ", m)
                 m = re.sub("/n", " ", m)
@@ -464,7 +461,6 @@ def dict_clean(dict):
         if i == 'Personal Details':
             for m in personal_keys:
                 temp = k[m]
-                # print(temp)
                 try:
                     temp = strip_emoji(temp)
                     temp = re.sub("\n", " ", temp)
@@ -476,7 +472,6 @@ def dict_clean(dict):
         if i == 'Experience':
             for m in exp_keys:
                 temp = k[m]
-                # print(temp)
                 try:
                     temp = strip_emoji(temp)
                     temp = re.sub("\n", " ", temp)
@@ -524,7 +519,7 @@ def strip_emoji(string):
                                    "]+", flags=re.UNICODE)
         return emoji_pattern.sub(r'', string)
     except Exception as e:
-        print("Error for emoji - ", e)
+        #print("Error for emoji - ", e)
         return string
 
 def g_translation_function_en(inText):
@@ -536,5 +531,5 @@ def g_translation_function_en(inText):
         else:
             return inText
     except Exception as e:
-        print(e)
+        #print(e)
         return inText

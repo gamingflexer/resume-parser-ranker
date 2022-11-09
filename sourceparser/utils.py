@@ -1,3 +1,4 @@
+import uuid
 from preprocessing import url_func, email, get_phone_numbers, data_grabber, get_human_names, address_grabber, pincode_grabber, pre_process1_rsw1, remove_hexcode_rhc
 
 def extract_data(text):
@@ -55,3 +56,6 @@ def extract_data(text):
     text1 = pre_process1_rsw1(text)
     ftext = remove_hexcode_rhc(text1)
     return (text, text1, scraplink, eid, phno, fdate, f_human_name, address, pincode, ftext)
+
+def uuid_generator():
+    return str(uuid.uuid4())

@@ -13,20 +13,18 @@ en_sm = spacy.load('en_core_web_sm')
 class Extract:
     def __init__(self, _file):
         text = fileconversionToEntites(_file, y=0)
-        print(f"starting model loading - text extracted")
         #text= text.decode()
         self.data = str(text)
         #raw = parser.from_file(_file)
         #self.data =  raw['content']
         self.new_data = utils.get_new_data(self.data)
         self.filename = _file.split('/')[-1]
-
-        print("----------------------")
-        print(self.filename)
+        print(f"Starting model loading - Text extracted - {self.filename}\n")
+        print("----------------------\n")
 
         self.custom_entities = utils.get_custom_entities(self.data)
 
-        #self.lang = model_extraction.get_lang(self.data)
+        self.lang = get_lang(self.data)
         self.personal_info = get_personal(
             self.custom_entities, self.data)
 
@@ -53,7 +51,7 @@ class Extract:
                         "Awards": self.awards
                         # "Other Information extracted:":self.others
                         }
-        print(json.dumps(self.details))
+        print(json.dumps(self.details) + "\n")
 
     def get_details(self):
         return (self.details)
