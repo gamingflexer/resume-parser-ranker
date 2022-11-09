@@ -19,6 +19,10 @@ A simple resume parser used for extracting information from resumes
 
 - You can install this package using
 
+- Start Docker Container
+  
+  - `docker run --rm -p 9998:9998 logicalspark/docker-tikaserver`
+
 ```Coming Soon```
 
 # Installation (dev)

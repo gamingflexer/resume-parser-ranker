@@ -133,3 +133,4 @@ test.ipynb
 resume-parser-ranker.code-workspace
 sourceparser/data/
 parser_log.txt
+sourceparser/learner/credentials.json

@@ -21,3 +21,8 @@ city = "models/cities_samples.txt"
 #temp data
 
 outputDirectory = os.path.join(basepath,"temp")
+
+# store resumes here
+data_path = os.path.join(basepath, 'data')
+resume_path = os.path.join(data_path, 'resumes')
+json_path = os.path.join(data_path, 'json')
