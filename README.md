@@ -1,7 +1,7 @@
 # Resume Parser & Ranker
 
 ```
-Resume Parser | Resume Ranker | Resume Summarizer
+Resume Parser | Resume Ranker | Resume Summariser
 ```
 # Features
 
