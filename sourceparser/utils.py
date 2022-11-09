@@ -1,4 +1,6 @@
 import uuid
+import random
+import pyfiglet
 from preprocessing import url_func, email, get_phone_numbers, data_grabber, get_human_names, address_grabber, pincode_grabber, pre_process1_rsw1, remove_hexcode_rhc
 
 def extract_data(text):
@@ -59,3 +61,12 @@ def extract_data(text):
 
 def uuid_generator():
     return str(uuid.uuid4())
+
+def captcha_verifer():
+    check_number = random.randint(0, 999)
+    check_string = f"{check_number:>04}"
+    print(pyfiglet.Figlet().renderText(check_string))
+    response = input("Please enter the number shown above to proceed: ")
+    if response != check_string:
+        exit(-1)
+    print("Passed verification check!")
