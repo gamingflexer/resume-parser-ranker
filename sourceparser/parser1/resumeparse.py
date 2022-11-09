@@ -17,7 +17,6 @@ import spacy
 from spacy.matcher import Matcher
 from spacy.matcher import PhraseMatcher
 
-import nltk
 from stemming.porter2 import stem
 
 # load pre-trained model

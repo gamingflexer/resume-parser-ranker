@@ -131,3 +131,5 @@ notes.txt
 parser1_log.txt
 test.ipynb
 resume-parser-ranker.code-workspace
+sourceparser/data/
+parser_log.txt
