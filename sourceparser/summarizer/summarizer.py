@@ -24,7 +24,6 @@ def summarize_intializer_model(model,gpu=True):
         model.load_model(summary_model, use_gpu=False)
     return model
     
-summarize_intializer_model()
 def summarize_text(model, text, multi_batch=True):
     if multi_batch:
         summaries = []
