@@ -44,6 +44,7 @@ if args.filename :
             summary = summarize_text(model,text,multi_batch=True)
         else:
             summary = summarize_text(model,text,multi_batch=False)
+        print(summary)
     
 if args.foldername:
     from sourceparser import SourceParser

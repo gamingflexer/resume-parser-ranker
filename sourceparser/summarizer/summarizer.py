@@ -30,13 +30,13 @@ def summarize_text(model, text, multi_batch=True):
         for each_text in text:
             each_text = re.sub('\n'," ",str(each_text))
             each_text = re.sub('\\n'," ",str(each_text))
-            text_to_summarize=f"""summarize:{each_text}"""
+            text_to_summarize=f"""summarize:{each_text[:511]}"""
             summary = model.predict(text_to_summarize)
             summaries.append(summary)
         return summaries
     else:
         text = re.sub('\n'," ",str(text))
         text = re.sub('\\n'," ",str(text))
-        text_to_summarize=f"""summarize:{text}"""
+        text_to_summarize=f"""summarize:{text[:511]}"""
         summary = model.predict(text_to_summarize)
     return summary
