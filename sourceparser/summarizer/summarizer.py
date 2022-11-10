@@ -12,7 +12,7 @@ def summarize_intializer_main(model_type="t5", model_name="t5-small"):
 def summarize_intializer_model(model,gpu=True):
     if not os.path.exists(summary_model):
                 os.mkdir(summary_model)
-    gdown.download("1uIgVgTFvDt0YtSksMjIXw-fzKGF4-N3B",output="",quiet=False)
+    gdown.download("https://drive.google.com/uc?id=1uIgVgTFvDt0YtSksMjIXw-fzKGF4-N3B",output=summary_model,quiet=False)
     if gpu:
         model.load_model(summary_model, use_gpu=True)
     else:
