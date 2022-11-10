@@ -16,15 +16,16 @@ parser.add_argument("-mb","--multiBatch", action='store_true')
 args = parser.parse_args()
 print(word)
 
-if args.filename:
-    print("\nFilename Should not contain any Whilespaces\n")
-    from sourceparser import SourceParser
-    parser_obj_file = SourceParser(str(args.filename))
-    print(parser_obj_file.parser())
-    if args.learner:
-        captcha_verifer()
-        from learner.learner import *
-        # add to database
+if args.filename :
+    if args.summariser == False:
+        print("\nINFO - Filename Should not contain any Whilespaces\n")
+        from sourceparser import SourceParser
+        parser_obj_file = SourceParser(str(args.filename))
+        print(parser_obj_file.parser())
+        if args.learner:
+            captcha_verifer()
+            from learner.learner import *
+            # add to database
     
 elif args.foldername:
     from sourceparser import SourceParser
