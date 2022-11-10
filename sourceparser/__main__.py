@@ -42,9 +42,14 @@ if args.filename :
         text = raw['content']
         if args.multiBatch:
             summary = summarize_text(model,text,multi_batch=True)
+            print(summary[0])
         else:
-            summary = summarize_text(model,text,multi_batch=False)
-        print(summary)
+            summaries = summarize_text(model,text,multi_batch=False)
+            for each_summary in summaries:
+                print(each_summary[0])
+            
+            
+        
     
 if args.foldername:
     from sourceparser import SourceParser

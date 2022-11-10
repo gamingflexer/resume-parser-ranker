@@ -4,6 +4,8 @@ import gdown #1uIgVgTFvDt0YtSksMjIXw-fzKGF4-N3B
 import re
 import os
 
+os.environ["TOKENIZERS_PARALLELISM"] = "false"
+
 def summarize_intializer_main(model_type="t5", model_name="t5-small"):
     model = SimpleT5()
     model.from_pretrained(model_type=model_type, model_name=model_name)
