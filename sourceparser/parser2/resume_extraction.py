@@ -13,8 +13,8 @@ from transformers import AutoTokenizer, AutoModelForTokenClassification, pipelin
 
 import logging as lg
 
-# tokenizer_bert_ner = AutoTokenizer.from_pretrained("dslim/bert-base-NER")
-# model_bert_ner = AutoModelForTokenClassification.from_pretrained("dslim/bert-base-NER")
+tokenizer_bert_ner = AutoTokenizer.from_pretrained("dslim/bert-base-NER")
+model_bert_ner = AutoModelForTokenClassification.from_pretrained("dslim/bert-base-NER")
 
 
 nlp = spacy.load('en_core_web_sm')

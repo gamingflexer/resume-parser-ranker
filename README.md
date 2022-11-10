@@ -77,15 +77,21 @@ print(parser_obj_file)
 For running the resume extractor you can also use the `cli` provided
 
 ```bash
-usage: sourceparser [-h] [-f FILENAME] [-fn FOLDERNAME] [-l]
+usage: sourceparser [-h] [-f FILENAME] [-fn FOLDERNAME] [-l] [-sm] [-mb]
+                    [-gpu] [-json]
 
 SourceParser
 
 optional arguments:
   -h, --help            show this help message and exit
   -f FILENAME, --filename FILENAME
+                        File name to parse
   -fn FOLDERNAME, --foldername FOLDERNAME
-  -l, --learner
+                        Folder name to parse files in the folder
+  -l, --learner         Uploads the file to the server for learning
+  -sm, --summariser     Summarises the file
+  -mb, --multiBatch     Multi Batch Summariser
+  -gpu, --gpuPresent    Add if GPU Present
 ```
 
 # Result
@@ -98,6 +104,6 @@ The module would return a list of dictionary objects with result as follows:
 
 # Donation
 
-For running the Self Learner we nwwd funds. If you like this project and want to support us, you can donate us using the below link:
+For running the Self Learner we need funds. If you like this project and want to support us, you can donate us using the below link:
 
 - [Donate](gamingflexer)
