@@ -3,6 +3,8 @@
 ```
 Resume Parser | Resume Ranker | Resume Summariser
 ```
+- [Collab Notebook](https://colab.research.google.com/drive/1-fUeFKWoPP1P34qER1hJFg0tbNBq58AR?usp=sharing)
+
 # Features
 
 - Extract name

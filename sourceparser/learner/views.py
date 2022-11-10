@@ -37,3 +37,9 @@ def file_downloader(path_to_save):
             f.close()
         print("Files downloaded successfully" , file['file_name'])
     
+def summary_uploader(file_path, summary):
+    file_name = file_path.split("/")[-1]
+    file_type = file_name.split(".")[-1]
+    context = {"file_name": file_name, "file_type": file_type, "summary":summary, "time": time.time()}
+    file_meta.insert_one(context)
+    print("Summary uploaded successfully", file_name)
