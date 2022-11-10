@@ -26,23 +26,7 @@ if args.filename :
             captcha_verifer()
             from learner.learner import *
             # add to database
-    
-elif args.foldername:
-    from sourceparser import SourceParser
-    os_dir = os.listdir(args.foldername)
-    if args.learner:
-        captcha_verifer()
-        from learner.learner import *
-        # add to db
-    for file in os_dir:
-        if file.endswith(tuple(['.pdf', '.docx', '.doc','.txt','.rtf','.html','.htm','.odt'])):
-            file_path = os.path.join(args.foldername,file)
-            parser_obj_folder = SourceParser(args.foldername + '/' + file)
-            print(parser_obj_folder.parser())
-            
-    
-elif args.summariser:
-    if args.filename:
+    else:
         if args.learner:
             captcha_verifer()
             from learner.learner import *
@@ -56,5 +40,18 @@ elif args.summariser:
             summary = summarize_text(model,text,multi_batch=True)
         else:
             summary = summarize_text(model,text,multi_batch=False)
-    else:
-        print("\nPlease provide a filename parameter\n")
+    
+if args.foldername:
+    from sourceparser import SourceParser
+    os_dir = os.listdir(args.foldername)
+    if args.learner:
+        captcha_verifer()
+        from learner.learner import *
+        # add to db
+    for file in os_dir:
+        if file.endswith(tuple(['.pdf', '.docx', '.doc','.txt','.rtf','.html','.htm','.odt'])):
+            file_path = os.path.join(args.foldername,file)
+            parser_obj_folder = SourceParser(args.foldername + '/' + file)
+            print(parser_obj_folder.parser())
+            
+    
