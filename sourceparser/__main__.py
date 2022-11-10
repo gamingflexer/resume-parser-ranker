@@ -13,6 +13,7 @@ parser.add_argument("-l","--learner", action='store_true')
 parser.add_argument("-sm","--summariser", action='store_true')
 parser.add_argument("-mb","--multiBatch", action='store_true')
 parser.add_argument("-gpu","--gpuPresent", action='store_true')
+parser.add_argument("-json","--json", action='store_true')
 
 args = parser.parse_args()
 print(word)
@@ -22,7 +23,10 @@ if args.filename :
         print("\nINFO - Filename Should not contain any Whilespaces\n")
         from sourceparser import SourceParser
         parser_obj_file = SourceParser(str(args.filename))
-        print(parser_obj_file.parser())
+        data = parser_obj_file.parse()
+        print(data)
+        if args.json :
+            json.dumps(data, open(f"{str(args.filename)}_sourceparser.json", "w"))                
         if args.learner:
             captcha_verifer()
             from learner.learner import *
@@ -38,16 +42,29 @@ if args.filename :
             model = summarize_intializer_model(model = main_model,gpu=True)
         else:
             model = summarize_intializer_model(model = main_model,gpu=False)
-        raw = parser.from_file(str(args.filename))
-        text = raw['content']
-        if args.multiBatch:
+        if args.multiBatch == False:
+            raw = parser.from_file(str(args.filename))
+            text = raw['content']
             summary = summarize_text(model,text,multi_batch=True)
             print(summary)
+            if args.json:
+                json.dumps({"summary":summary}, open(f"{str(args.filename)}_summary_sourceparser.json", "w"))    
         else:
-            summaries = summarize_text(model,text,multi_batch=False)
-            for each_summary in summaries:
-                print(each_summary)
-            
+            if args.foldername:
+                text_list = []
+                os_dir = os.listdir(str(args.foldername))
+                for file in os_dir:
+                    if file.endswith(tuple(['.pdf', '.docx', '.doc','.txt','.rtf','.html','.htm','.odt'])):
+                        file_path = os.path.join(args.foldername,file)
+                        raw = parser.from_file(file_path)
+                        text = raw['content']
+                        text_list.append(text)
+                summaries = summarize_text(model,text_list,multi_batch=False)
+                for each_summary in summaries:
+                    print(each_summary)
+                    if args.json:
+                        json.dumps({"summary":each_summary}, open(f"{str(args.filename)}_summary_sourceparser.json", "w"))    
+                
             
         
     
@@ -62,6 +79,9 @@ if args.foldername:
         if file.endswith(tuple(['.pdf', '.docx', '.doc','.txt','.rtf','.html','.htm','.odt'])):
             file_path = os.path.join(args.foldername,file)
             parser_obj_folder = SourceParser(args.foldername + '/' + file)
-            print(parser_obj_folder.parser())
+            data = parser_obj_folder.parser()
+            print(data)
+            if args.json:
+                json.dumps(data, open(f"{file}_sourceparser.json", "w"))    
             
     

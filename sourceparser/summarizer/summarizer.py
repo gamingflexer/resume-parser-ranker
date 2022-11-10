@@ -41,7 +41,4 @@ def summarize_text(model, text, multi_batch=True):
         text = re.sub('\\n'," ",str(text))
         text_to_summarize=f"""summarize:{text[:511]}"""
         summary = model.predict(text_to_summarize)
-        summary.replace("[","")
-        summary.replace("]","")
-        summary.replace("'","")
         return summary
