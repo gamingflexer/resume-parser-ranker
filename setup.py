@@ -34,7 +34,8 @@ setup(
                       "torch",
                       "deep_translator==1.9.1",
                       "pyfiglet==0.8.post1",
-                      "pymongo==3.10.1"
+                      "pymongo==3.10.1",
+                      "simplet5"
                       ],
 
     classifiers=[
