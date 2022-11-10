@@ -35,9 +35,9 @@ if args.filename :
         from tika import parser
         main_model = summarize_intializer_main()
         if args.gpuPresent:
-            model = summarize_intializer_model(main_model,gpu=True)
+            model = summarize_intializer_model(model = main_model,gpu=True)
         else:
-            model = summarize_intializer_model(main_model,gpu=False)
+            model = summarize_intializer_model(model = main_model,gpu=False)
         raw = parser.from_file(str(args.filename))
         text = raw['content']
         if args.multiBatch:
