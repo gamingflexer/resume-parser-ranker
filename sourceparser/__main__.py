@@ -12,6 +12,7 @@ parser.add_argument("-fn","--foldername", type=str)
 parser.add_argument("-l","--learner", action='store_true')
 parser.add_argument("-sm","--summariser", action='store_true')
 parser.add_argument("-mb","--multiBatch", action='store_true')
+parser.add_argument("-gpu","--gpuPresent", action='store_true')
 
 args = parser.parse_args()
 print(word)
@@ -32,8 +33,11 @@ if args.filename :
             from learner.learner import *
         from summarizer.summarizer import *
         from tika import parser
-        summarize_intializer_main()
-        model = summarize_intializer_model()
+        main_model = summarize_intializer_main()
+        if args.gpuPresent:
+            model = summarize_intializer_model(main_model,gpu=True)
+        else:
+            model = summarize_intializer_model(main_model,gpu=False)
         raw = parser.from_file(str(args.filename))
         text = raw['content']
         if args.multiBatch:
